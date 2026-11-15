@@ -23,4 +23,22 @@ public class TaskController {
     public Task addTask(@RequestBody Task task) {
         return taskService.addTask(task);
     }
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable int id) {
+        return taskService.getTaskById(id);
+    }
+    @PutMapping("/{id}")
+    public Task updateTask(@PathVariable int id, @RequestBody Task task) {
+        return taskService.updateTask(id, task);
+    }
+    @DeleteMapping("/{id}")
+    public String deleteTask(@PathVariable int id) {
+        boolean deleted = taskService.deleteTask(id);
+
+        if (!deleted) {
+            return "Task not found";
+        }
+
+        return "Task deleted successfully";
+    }
 }
