@@ -1,28 +1,36 @@
+package com.example.taskmanager.model;
 
-package com.example.taskmanager;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "tasks")
 public class Task {
 
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String title;
+
     private String description;
+
     private String status;
 
     public Task() {
     }
 
-    public Task(int id, String title, String description, String status) {
+    public Task(Long id, String title, String description, String status) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
